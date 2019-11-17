@@ -32,10 +32,11 @@ public class FunPartTest {
 		testMappingFun = funNormal;
 		List<String> firstReq= testObj.callFunRequest(1);
 		assertEquals("FizzBuzz",testMappingFun.apply(15));
+		assertEquals("FizzBuzz",firstReq.get(14)); 
 		assertEquals("Fizz",testMappingFun.apply(12));
 		assertEquals("Buzz",testMappingFun.apply(10));
 		assertEquals("2",testMappingFun.apply(2));
-		assertEquals("FizzBuzz",firstReq.get(14));
+		
 		
 	}
 	
@@ -49,10 +50,11 @@ public class FunPartTest {
 		testMappingFun = funWithFizz;
 		List<String> secondReq = testObj.callFunRequest(2);
 		assertEquals("FizzBuzz",testMappingFun.apply(35));
+		assertEquals("FizzBuzz",secondReq.get(34));
 		assertEquals("Fizz",testMappingFun.apply(23));
 		assertEquals("Buzz",testMappingFun.apply(10));
 		assertEquals("8",testMappingFun.apply(8));
-		assertEquals("FizzBuzz",secondReq.get(34));
+		
 				
 	}
 	
@@ -65,10 +67,11 @@ public class FunPartTest {
 		testMappingFun = funWithBuzz;
 		List<String> thirdReq = testObj.callFunRequest(3);
 		assertEquals("FizzBuzz",testMappingFun.apply(54));
+		assertEquals("FizzBuzz",thirdReq.get(53));
 		assertEquals("Fizz",testMappingFun.apply(9));
 		assertEquals("Buzz",testMappingFun.apply(52));
 		assertEquals("16",testMappingFun.apply(16));
-		assertEquals("FizzBuzz",thirdReq.get(53));
+		
 	}
 
 	@Test
@@ -80,10 +83,11 @@ public class FunPartTest {
 		testMappingFun = funWithFizzBuzz;
 		List<String> fourthReq = testObj.callFunRequest(4);
 		assertEquals("FizzBuzz",testMappingFun.apply(57));
+		assertEquals("FizzBuzz",fourthReq.get(56));
 		assertEquals("Fizz",testMappingFun.apply(37));
 		assertEquals("Buzz",testMappingFun.apply(59));
 		assertEquals("22",testMappingFun.apply(22));
-		assertEquals("FizzBuzz",fourthReq.get(56));
+		
 		
 	}
 	
