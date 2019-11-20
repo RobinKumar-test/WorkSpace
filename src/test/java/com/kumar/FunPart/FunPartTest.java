@@ -1,25 +1,30 @@
 package com.kumar.FunPart;
 
-import static com.kumar.FunPart.FunPartUtilites.funWithFizz;
-import static com.kumar.FunPart.FunPartUtilites.funWithBuzz;
-import static com.kumar.FunPart.FunPartUtilites.funWithFizzBuzz;
-import static com.kumar.FunPart.FunPartUtilites.funNormal;
 import static org.junit.Assert.assertEquals;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 import org.junit.Before;
 import org.junit.Test;
-import com.kumar.FunPart.FunPart;
+
+
+
+
 
 public class FunPartTest {
 	
-	FunPart testObj;
-	Function<Integer, String> testMappingFun;
+	FunPartFactory funFactory;
+	List<Integer>funList;
 	final int CLASS_SIZE=100;
+	
 	@Before
 	public void setup()
 	{
-		testObj = new FunPart(CLASS_SIZE);
+		funFactory = new FunPartFactory();
+		funList = new ArrayList<Integer>();
+		for(Integer tmp=1;tmp<=CLASS_SIZE;tmp++)
+		{
+			funList.add(tmp);
+		}
 		
 	}
 	
@@ -29,13 +34,11 @@ public class FunPartTest {
 	**/
 	public void testFirstReq() 
 	{
-		testMappingFun = funNormal;
-		List<String> firstReq= testObj.callFunRequest(1);
-		assertEquals("FizzBuzz",testMappingFun.apply(15));
-		assertEquals("FizzBuzz",firstReq.get(14)); 
-		assertEquals("Fizz",testMappingFun.apply(12));
-		assertEquals("Buzz",testMappingFun.apply(10));
-		assertEquals("2",testMappingFun.apply(2));
+		List<String> firstReq= funFactory.create(1).callFuncRequest(funList);
+		assertEquals("FizzBuzz",firstReq.get(14));
+		assertEquals("Fizz",firstReq.get(11));
+		assertEquals("Buzz",firstReq.get(9));
+		assertEquals("2",firstReq.get(1));
 		
 		
 	}
@@ -47,15 +50,11 @@ public class FunPartTest {
 	**/
 	public void testSecondReq() 
 	{
-		testMappingFun = funWithFizz;
-		List<String> secondReq = testObj.callFunRequest(2);
-		assertEquals("FizzBuzz",testMappingFun.apply(35));
+		List<String> secondReq= funFactory.create(2).callFuncRequest(funList);
 		assertEquals("FizzBuzz",secondReq.get(34));
-		assertEquals("Fizz",testMappingFun.apply(23));
-		assertEquals("Buzz",testMappingFun.apply(10));
-		assertEquals("8",testMappingFun.apply(8));
-		
-				
+		assertEquals("Fizz",secondReq.get(22));
+		assertEquals("Buzz",secondReq.get(9));
+		assertEquals("8",secondReq.get(7));
 	}
 	
 	@Test
@@ -63,15 +62,12 @@ public class FunPartTest {
 	 * To test A number is Buzz if it is divisible by 5 or if it has 5 in it
 	 **/
 	public void testThirdReq() 
-	{
-		testMappingFun = funWithBuzz;
-		List<String> thirdReq = testObj.callFunRequest(3);
-		assertEquals("FizzBuzz",testMappingFun.apply(54));
+	{		
+		List<String> thirdReq = funFactory.create(3).callFuncRequest(funList);
 		assertEquals("FizzBuzz",thirdReq.get(53));
-		assertEquals("Fizz",testMappingFun.apply(9));
-		assertEquals("Buzz",testMappingFun.apply(52));
-		assertEquals("16",testMappingFun.apply(16));
-		
+		assertEquals("Fizz",thirdReq.get(8));
+		assertEquals("Buzz",thirdReq.get(51));
+		assertEquals("16",thirdReq.get(15));
 	}
 
 	@Test
@@ -80,15 +76,11 @@ public class FunPartTest {
 	 **/
 	public void testFourthReq() 
 	{
-		testMappingFun = funWithFizzBuzz;
-		List<String> fourthReq = testObj.callFunRequest(4);
-		assertEquals("FizzBuzz",testMappingFun.apply(57));
+		List<String> fourthReq = funFactory.create(4).callFuncRequest(funList);
 		assertEquals("FizzBuzz",fourthReq.get(56));
-		assertEquals("Fizz",testMappingFun.apply(37));
-		assertEquals("Buzz",testMappingFun.apply(59));
-		assertEquals("22",testMappingFun.apply(22));
-		
-		
+		assertEquals("Fizz",fourthReq.get(36));
+		assertEquals("Buzz",fourthReq.get(58));
+		assertEquals("22",fourthReq.get(21));	
 	}
 	
 }
