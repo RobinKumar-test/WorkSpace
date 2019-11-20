@@ -83,4 +83,12 @@ public class FunPartTest {
 		assertEquals("22",fourthReq.get(21));	
 	}
 	
+	@Test(expected =NullPointerException.class)
+	/**
+	 * test null pointer exception
+	 */
+	public void testWhenExceptionThrown()
+	{
+		List<String> fifthReq = funFactory.create(5).callFuncRequest(funList);
+	}
 }
